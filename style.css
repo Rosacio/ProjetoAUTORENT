@@ -1,0 +1,87 @@
+#main_img{
+    background-size: cover;
+    min-height: 80vh;
+}
+
+.col .card img {
+    width: 18em;
+    height: 18em;
+}
+
+.navbar-toggler{
+    width:20px;
+    height: 20px;
+    position: relative;
+    transition: .5s ease-in-out; 
+}
+
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus{
+    outline: none;
+    box-shadow: none;
+    border: 0;
+}
+
+.navbar-toggler span {
+    margin: 0;
+    padding: 0;
+}
+
+.toggler-icon {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #0dcaf0;
+    border-radius: 1px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.middle-bar{
+    margin-top: 0px;
+}
+
+/*Quando clicamos no botão de navegar */
+
+.navbar-toggler .top-bar {
+    margin-top: 0px;
+    transform: rotate(135deg);
+}
+
+.navbar-toggler .middle-bar {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.navbar-toggler .bottom-bar {
+    margin-top: 0px;
+    transform: rotate(-135deg);
+}
+
+/*Estado quando abrimos a navbar*/
+
+.navbar-toggler.collapsed .top-bar{
+    margin-top: -20px;
+    transform: rotate(0deg);
+}
+
+.navbar-toggler.collapsed .middle-bar{
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.navbar-toggler.collapsed .bottom-bar{
+    margin-top: 20px;
+    transform: rotate(0deg);
+}
+
+/* cor das 3 linhas */
+
+.navbar-toggler.collapsed .toggler-icon{
+    background: linear-gradient(90deg, rgba(156,235,255,1) 0%, rgba(13,202,240,1) 66%, rgba(104,147,253,1) 100%);
+}
