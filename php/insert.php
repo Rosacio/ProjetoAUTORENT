@@ -18,11 +18,12 @@
                 exit();
             }
         }
+        //Ir buscar dados e colocar no site
         public function findData() {
-        $sql = 'select * from clientes ORDER BY Nome;';
-        $stmt = $this -> pdo -> query($sql);
-        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $res;
+            $sql = 'select * from clientes ORDER BY Nome;';
+            $stmt = $this -> pdo -> query($sql);
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $res;
         }
     }
 
