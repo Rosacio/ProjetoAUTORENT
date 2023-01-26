@@ -86,3 +86,13 @@
 .navbar-toggler.collapsed .toggler-icon{
     background: linear-gradient(90deg, rgba(156,235,255,1) 0%, rgba(13,202,240,1) 66%, rgba(104,147,253,1) 100%);
 }
+
+.registar {
+    text-decoration: none;
+    color: #a78688;
+}
+
+.registar:hover {
+    color: #0dcaf0;
+    text-decoration: none;
+}
