@@ -15,8 +15,8 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-info border-4 sticky-top bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html"> <img src="Imagens/Vector_Auto.webp" alt="Bootstrap" width="60" height="48" class="rounded"></a>
-          <a class="navbar-brand" href="/index.html">Auto-Rent Lda</a>
+            <a class="navbar-brand" href="#"> <img src="Imagens/Vector_Auto.webp" alt="Bootstrap" width="60" height="48" class="rounded"></a>
+          <a class="navbar-brand" href="#">Auto-Rent Lda</a>
           <button class="navbar-toggler collapse d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="toggler-icon top-bar "></span>
             <span class="toggler-icon middle-bar "></span>
@@ -46,92 +46,72 @@
               </li>
             </ul>
             <div class="d-flex">
-              <a href="#" class="registar px-3 py-2">Criar conta</a>
+              <a href="/criarConta.html" class="registar px-3 py-2">Criar conta</a>
               <a href="/entrar.html"><button class="btn btn-outline-info" type="submit">Entrar</button></a>
             </div>
           </div>
         </div>
       </nav>
 
-      <div id="main_img" class="container-fluid p-0 d-flex align-items-center justify-content-center" style="background-image: url('Imagens/Travel.jpg');">
-        <div class="h-50 w-50 justify-content-center">
-            <form class="row g-3 needs-validation bg-white rounded p-4" novalidate>
-                <div class="col-md-4">
-                  <label for="validationCustom01" class="form-label">Nome</label>
-                  <input type="text" class="form-control" id="validationCustom01" placeholder="Joaquim" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
+      <div id="main_img" class="container-fluid p-0 d-flex flex-column justify-content-center" style="background-image: url('Imagens/Travel.jpg');"> 
+                <div class="d-flex flex-row bd-hilight align-items-center">
+                    <h2>adsda</h2>
                 </div>
-                <div class="col-md-4">
-                  <label for="validationCustom02" class="form-label">Apelido</label>
-                  <input type="text" class="form-control" id="validationCustom02" placeholder="Moreira" required>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="xxx-xxx-xxx" required>
-                    <div class="valid-feedback">
-                      Looks good!
+                <div class="d-flex flex-row justify-content-around">
+                    <div class="col">
+                        <h2>Lista de Clientes</h2>
+                        <table id="tba" class="table table-light table-striped-columns table-hover border border-dark border-3">
+                            <thead>
+                                    <th>Nome</th>
+                                    <th>Apelido</th>
+                                    <th>Telefone</th>
+                                    <th>Email</th>
+                                    <th>Morada</th>
+                                    <th>Cidade</th>
+                                    <th>Codigo Postal</th>
+                                    <th>País</th>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
-                <div class="mb-12">
-                   <label for="exampleInputEmail1" class="form-label">Email</label>
-                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                   <div id="emailHelp" class="form-text">Este email nunca será partilhado com terceiros</div>
-                </div>
-                <div class="col-md-12">
-                  <label for="validationCustomUsername" class="form-label">Morada</label>
-                  <div class="input-group has-validation">
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                      Please choose a username.
+                    <div class="col">
+                        <table class="table table-light table-striped-columns table-hover border border-dark border-3">
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                              </tr>
+                            </tbody>
+                        </table>
                     </div>
-                  </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="validationCustom03" class="form-label">Cidade</label>
-                  <input type="text" class="form-control" id="validationCustom03" required>
-                  <div class="invalid-feedback">
-                    Por favor, coloque uma cidade.
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label for="validationCustom04" class="form-label">País</label>
-                  <select class="form-select" id="validationCustom04" required>
-                    <option selected disabled value="">Escolha..</option>
-                    <option>Portugal</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid state.
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <label for="validationCustom05" class="form-label">Código Postal</label>
-                  <input type="text" class="form-control" id="validationCustom05" required>
-                  <div class="invalid-feedback">
-                    Coloque um código de postal válido.
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                      Concordo com os termos de utilização
-                    </label>
-                    <div class="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Criar conta</button>
-                </div>
-              </form>
-        </div>
+                
       </div>
+
+
 
 <footer class="text-center text-lg-start bg-white text-muted">
   <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-info border-4">
@@ -183,9 +163,8 @@
     © 2022 Copyright
   </div>
 </footer>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
- 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
+
     <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

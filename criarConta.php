@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,37 +56,44 @@
 
       <div id="main_img" class="container-fluid p-0 d-flex align-items-center justify-content-center" style="background-image: url('Imagens/Travel.jpg');">
         <div class="h-50 w-50 justify-content-center">
-            <form class="row g-3 needs-validation bg-white rounded p-4" novalidate>
+            <form action="php/registar.php"  method="post" class="row g-3 needs-validation bg-white rounded p-4" novalidate>
+                <div class="col-md-12">
+                    <h2>Crie a sua conta</h2>
+                </div>
                 <div class="col-md-4">
                   <label for="validationCustom01" class="form-label">Nome</label>
-                  <input type="text" class="form-control" id="validationCustom01" placeholder="Joaquim" required>
+                  <input type="text" name="Nome" class="form-control" id="validationCustom01" placeholder="Joaquim" required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
                 <div class="col-md-4">
                   <label for="validationCustom02" class="form-label">Apelido</label>
-                  <input type="text" class="form-control" id="validationCustom02" placeholder="Moreira" required>
+                  <input type="text" name="Apelido" class="form-control" id="validationCustom02" placeholder="Moreira" required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom01" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="xxx-xxx-xxx" required>
+                    <input type="text" name="Telefone" class="form-control" id="validationCustom01" placeholder="xxx-xxx-xxx" required>
                     <div class="valid-feedback">
                       Looks good!
                     </div>
                   </div>
                 <div class="mb-12">
                    <label for="exampleInputEmail1" class="form-label">Email</label>
-                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                   <input type="email" name="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                    <div id="emailHelp" class="form-text">Este email nunca será partilhado com terceiros</div>
+                </div>
+                <div class="mb-12">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" name="Pass" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="col-md-12">
                   <label for="validationCustomUsername" class="form-label">Morada</label>
                   <div class="input-group has-validation">
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                    <input type="text" name="Morada" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
                       Please choose a username.
                     </div>
@@ -93,41 +101,27 @@
                 </div>
                 <div class="col-md-6">
                   <label for="validationCustom03" class="form-label">Cidade</label>
-                  <input type="text" class="form-control" id="validationCustom03" required>
+                  <input type="text" name="Cidade" class="form-control" id="validationCustom03" required>
                   <div class="invalid-feedback">
                     Por favor, coloque uma cidade.
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="validationCustom04" class="form-label">País</label>
-                  <select class="form-select" id="validationCustom04" required>
-                    <option selected disabled value="">Escolha..</option>
-                    <option>Portugal</option>
-                  </select>
+                  <label for="validationCustom05" class="form-label">Código Postal</label>
+                  <input type="text" name="CodigoPostal" class="form-control" id="validationCustom05" required>
                   <div class="invalid-feedback">
-                    Please select a valid state.
+                    Coloque um código de postal válido.
                   </div>
                 </div>
                 <div class="col-md-3">
-                  <label for="validationCustom05" class="form-label">Código Postal</label>
-                  <input type="text" class="form-control" id="validationCustom05" required>
+                  <label for="validationCustom05" class="form-label">País</label>
+                  <input type="text" name="Pais" class="form-control" id="validationCustom05" required>
                   <div class="invalid-feedback">
                     Coloque um código de postal válido.
                   </div>
                 </div>
                 <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
-                      Concordo com os termos de utilização
-                    </label>
-                    <div class="invalid-feedback">
-                      You must agree before submitting.
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary" type="submit">Criar conta</button>
+                  <button class="btn btn-primary" type="submit" value="Criar Conta" name="register">Criar conta</button>
                 </div>
               </form>
         </div>
@@ -185,7 +179,7 @@
 </footer>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
  
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
     <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 </body>
 </html>
