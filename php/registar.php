@@ -23,7 +23,7 @@
     }  catch(PDOException $e){
             echo $e->getMessage();
     }
-    echo "Registo bem sucedido!";
+    echo "<h1>Registo bem sucedido!</h1>";
 	$pdo = null;
     header('location: ../criarConta.php');
 	}

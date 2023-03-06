@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-info border-4 sticky-top bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="Imagens/Vector_Auto.webp" alt="Bootstrap" width="60" height="48" class="rounded"></a>
-          <a class="navbar-brand" href="#">Auto-Rent Lda</a>
+          <a class="navbar-brand" href="home.php">Auto-Rent Lda</a>
           <button class="navbar-toggler collapse d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="toggler-icon top-bar "></span>
             <span class="toggler-icon middle-bar "></span>
@@ -35,7 +35,7 @@
                   Fale connosco!
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/lojas.html">As nossas lojas</a></li>
+                  <li><a class="dropdown-item" href="lojas.php">As nossas lojas</a></li>
                   <li><a class="dropdown-item" href="#">Contactos</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Opinião dos nossos clientes</a></li>
@@ -46,69 +46,71 @@
               </li>
             </ul>
             <div class="d-flex">
-              <a href="/criarConta.html" class="registar px-3 py-2">Criar conta</a>
-              <a href="/entrar.html"><button class="btn btn-outline-info" type="submit">Entrar</button></a>
+              <a href="criarConta.php" class="registar px-3 py-2">Criar conta</a>
+              <a href="entrar.php"><button class="btn btn-outline-info" type="submit">Entrar</button></a>
             </div>
           </div>
         </div>
       </nav>
 
-      <div id="main_img" class="container-fluid p-0 d-flex align-items-center justify-content-center" style="background-image: url('Imagens/Travel.jpg');">
-        <div align="right">
-          <button type="button" id="add_button" data-toggle="modal"
-          data-target="#userModal" class="btn btn-info btn-lg">Add</button>
-        </div>
+      <div id="main_img" class="container-fluid p-0 d-flex flex-column align-items-center justify-content-center" style="background-image: url('Imagens/Travel.jpg');">
         <div class="h-70 w-70 justify-content-center table-responsive">        
-			    <table id="user_data" class="table table-bordered table-striped bg-white rounded" style="margin-top:20px;">
-				    <thead>
+			    <table id="jquery-datatable-ajax-php" class="table table-bordered table-striped bg-white rounded mb-0" style="margin-top:20px;">
+            <thead>
               <tr>
-					      <th scope="col">Imagem</th>
-                <th scope="col">Marca</th>
-                <th scope="col">Modelo</th>
-                <th scope="col">Preço dia</th>
-                <th scope="col">Disponibilidade</th>
-                <th scope="col">Onde alugar</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Quilometragem</th>
+                <th>Preço</th>
+                <th>Opções</th>
               </tr>
-				    </thead>
-				    <tbody id="tbody">
+            </thead>
+            <tbody>
+              <?php
+                require_once 'php\connection.php';
+                $stmt = $pdo->query('SELECT * FROM carro');
 
+                if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
+                  // Apagar carro
+                  $stmt = $pdo->prepare('DELETE FROM carro WHERE id = :id');
+                  $stmt->execute(['id' => $_GET['id']]);
+                  echo '<script>alert("Carro deletado com sucesso!");</script>';
+                  echo '<script>window.location.href = "home.php";</script>';
+              }
+                //Mostrar tabela
+                while ($row = $stmt->fetch())
+                {
+                  echo '<tr>';
+                  echo '<td>' . $row['make'] . '</td>';
+                  echo '<td>' . $row['model'] . '</td>';
+                  echo '<td>' . $row['year'] . '</td>';
+                  echo '<td>' . $row['mileage'] . '</td>';
+                  echo '<td>' . $row['price'] . '</td>';
+                  echo '<td>';
+                  echo '<button type="button" class="btn btn-info m-1 edit-car-btn" data-bs-toggle="modal" data-bs-target="#editCarModal" data-car-id="' . $row['id'] . '">Editar</button>';
+                  echo '<a class="btn btn-outline-secondary m-1" href="?action=delete&id=' . $row['id'] . '">Apagar</a>';
+                  echo '</td>';
+                  echo '</tr>';
+                }
+              ?>
             </tbody>
-			    </table>
+            <tfoot>
+              <tr>
+                <th colspan="5"></td>
+                <td class="text-center">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertCarModal">Novo Carro</button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
-<div id="userModal" class="modal fade">
-  <div class="modal-dialog">
-      <form method="post" id="user_form" enctype="multipart/form-data">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Add User</h4>
-          </div>
-          <div class="modal-body">
-              <label>Coloque Marca</label>
-              <input type="text" name="Marca" id="Marca" class="form-control"/>
-              <br>
-              <label>Coloque Modelo</label>
-              <input type="text" name="Modelo" id="Modelo" class="form-control"/>
-              <br>
-              <label>Selecione uma foto</label>
-              <input type="file" name="imagem" id="imagem" class="form-control"/>
-              <span id="user_uploaded_image"></span>
-              <br>
-          </div>
-          <div class="modal-footer">
-            <input type="hidden" name="operation" id="operation" />
-            <input type="submit" name="action" id="action" class="btn btn-sucess" value="Add" /> 
-          </div>
-        </div>
-  </div>
-</div>
-
       <div id="Container_Cards" class="container mt-5 mb-5">
         <div class="row justify-content-around margin-top-5">
             <div class="col p-3">
                 <div class="card" style="width: 20rem;">
-                    <img src="/Imagens/pexels-pixabay-237195.jpg" class="card-img-top" alt="...">
+                    <img src="Imagens/pexels-pixabay-237195.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">A nossa frota</h5>
                       <p class="card-text">Conheça todos os nossos veículos à sua disposição e as suas condições.</p>
@@ -118,7 +120,7 @@
             </div>
             <div class="col p-3">
                 <div class="card" style="width: 20rem;">
-                    <img src="/Imagens/pexels-maria-geller-2127039.jpg" class="card-img-top" alt="...">
+                    <img src="Imagens/pexels-maria-geller-2127039.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">As nossas lojas</h5>
                       <p class="card-text">Conheça os nossos colaboradores o mais perto de si.</p>
@@ -129,7 +131,7 @@
             </div>
             <div class="col p-3">
                 <div class="card" style="width: 20rem;">
-                    <img src="/Imagens/pexels-oziel-gómez-845405.jpg" class="card-img-top" alt="...">
+                    <img src="Imagens/pexels-oziel-gómez-845405.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">As nossas parcerias</h5>
                       <p class="card-text">Veja o que os nossos clientes tem a dizer sobre nós.</p>
@@ -195,7 +197,92 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
     <script src="bootstrap-5.0.2-dist/js/bootstrap.js"></script>
-    <script src="/js/jquery-min.js"></script>
-    <script src="/js/tabela.js"></script>
+    <script src="js/jquery-min.js"></script>
+    <script src="js/tabela.js"></script>
+    <!-- Modal -->
+<div class="modal fade" id="editCarModal" tabindex="-1" role="dialog" aria-labelledby="editCarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCarModalLabel">Editar carro</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- form to edit car -->
+        <form id="edit-car-form" method="post" action="php/edit-car.php">
+          <input type="hidden" id="car-id" name="car-id">
+          <div class="form-group">
+            <label for="make">Marca</label>
+            <input type="text" class="form-control" id="make" name="make" required>
+          </div>
+          <div class="form-group">
+            <label for="model">Modelo</label>
+            <input type="text" class="form-control" id="model" name="model" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Ano</label>
+            <input type="number" class="form-control" id="year" name="year" required>
+          </div>
+          <div class="form-group">
+            <label for="mileage">Quilometragem</label>
+            <input type="number" class="form-control" id="mileage" name="mileage" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Preço</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" id="edit-car-submit" class="btn btn-primary" form="edit-car-form">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="insertCarModal" tabindex="-1" role="dialog" aria-labelledby="insertCarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="insertCarModalLabel">Adicionar um carro</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- form to insert car -->
+        <form id="insert-car-form" method="post" action="php/insert-car.php">
+          <input type="hidden" id="car-id" name="car-id">
+          <div class="form-group">
+            <label for="make">Marca</label>
+            <input type="text" class="form-control" id="make" name="make" required>
+          </div>
+          <div class="form-group">
+            <label for="model">Modelo</label>
+            <input type="text" class="form-control" id="model" name="model" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Ano</label>
+            <input type="number" class="form-control" id="year" name="year" required>
+          </div>
+          <div class="form-group">
+            <label for="mileage">Quilometragem</label>
+            <input type="number" class="form-control" id="mileage" name="mileage" required>
+          </div>
+          <div class="form-group">
+            <label for="price">Preço</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" id="insert-car-submit" class="btn btn-primary" form="insert-car-form" value="Criar Carro" name="inserir">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

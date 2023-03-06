@@ -16,8 +16,8 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-info border-4 sticky-top bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html"> <img src="Imagens/Vector_Auto.webp" alt="Bootstrap" width="60" height="48" class="rounded"></a>
-          <a class="navbar-brand" href="/index.html">Auto-Rent Lda</a>
+            <a class="navbar-brand" href="home.php"> <img src="Imagens/Vector_Auto.webp" alt="Bootstrap" width="60" height="48" class="rounded"></a>
+          <a class="navbar-brand" href="home.php">Auto-Rent Lda</a>
           <button class="navbar-toggler collapse d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="toggler-icon top-bar "></span>
             <span class="toggler-icon middle-bar "></span>
@@ -47,8 +47,8 @@
               </li>
             </ul>
             <div class="d-flex">
-              <a href="#" class="registar px-3 py-2">Criar conta</a>
-              <a href="/entrar.html"><button class="btn btn-outline-info" type="submit">Entrar</button></a>
+              <a href="criarConta.php" class="registar px-3 py-2">Criar conta</a>
+              <a href="entrar.php"><button class="btn btn-outline-info" type="submit">Entrar</button></a>
             </div>
           </div>
         </div>
